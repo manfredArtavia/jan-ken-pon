@@ -1,0 +1,20 @@
+{
+  "name": "jankenpon",
+  "version": "1.0.0",
+  "description": "A restful API to play the traditional game of rock-paper-scissors in single match or tournament",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "scripts": {
+    "start":"node app.js"
+  },
+  "author": "Manfred Artavia",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "method-override": "^2.3.5",
+    "mongoose": "^4.4.14"
+  }
+}
