@@ -8,16 +8,32 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());  
 app.use(methodOverride());
 
+// Import Models and controllers
+var models     = require('./models/player')(app, mongoose);
+var PlayerCtrl = require('./controllers/players');
 var router = express.Router();
 
 router.get('/', function(req, res) {  
-   res.send("Hello World!");
+   res.send("Let's Rock!!!");
 });
 
 app.use(router);
 
-app.listen(3000, function() {  
-  console.log("Node server running on http://localhost:3000");
+// API routes
+var players = express.Router();
+
+players.route('/result')
+  .post(PlayerCtrl.saveResult);
+
+
+app.use('/api/championship', players);
+mongoose.connect('mongodb://localhost/players', function(err, res) {  
+  if(err) {
+    console.log('ERROR: connecting to Database. ' + err);
+  }
+  app.listen(3000, function() {
+    console.log("Node server running on http://localhost:3000");
+  });
 });
 
 // Start server
@@ -25,4 +41,4 @@ app.listen(3000, function() {
 var server = app.listen(process.env.PORT || 8080, function () {
     var port = server.address().port;
     console.log("App now running on port", port);
-  });/*
+  });*/
