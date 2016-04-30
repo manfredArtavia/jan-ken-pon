@@ -28,6 +28,9 @@ players.route('/result')
 players.route('/top')
   .get(PlayerCtrl.getTop);
 
+players.route('/new')
+  .get(PlayerCtrl.newChampionship);
+
 app.use('/api/championship', players);
 mongoose.connect('mongodb://localhost/players', function(err, res) {  
   if(err) {
