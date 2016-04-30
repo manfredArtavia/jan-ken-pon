@@ -25,6 +25,8 @@ var players = express.Router();
 players.route('/result')
   .post(PlayerCtrl.saveResult);
 
+players.route('/top')
+  .get(PlayerCtrl.getTop);
 
 app.use('/api/championship', players);
 mongoose.connect('mongodb://localhost/players', function(err, res) {  
