@@ -4,16 +4,16 @@
   "description": "A restful API to play the traditional game of rock-paper-scissors in single match or tournament",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "scripts": {
-    "start":"node app.js"
+    "start": "node app.js"
   },
   "author": "Manfred Artavia",
   "license": "ISC",
   "dependencies": {
+    "angular": "^1.5.5",
     "body-parser": "^1.15.0",
+    "bootstrap": "^3.3.6",
     "express": "^4.13.4",
+    "jquery": "^2.2.3",
     "method-override": "^2.3.5",
     "mongoose": "^4.4.14"
   }

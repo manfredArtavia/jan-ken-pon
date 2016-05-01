@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html ng-app="jankenpon">
+<html>
+<head>
+	<title>jan-ken-pon</title>
+	<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>			
+	<script src="/node_modules/angular/angular.js"></script>
+	<script src="/node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="/app.js"></script>
+	<script src="/controllers/top.controller.js"></script>
+
+	<nav class="navbar navbar-default navbar-fixed-top">		  
+		<div class="container navbar-header">		      
+			<h1 class="text-center">Jankenpón Championship</h1>
+		</div>	     		   		     		        		   
+	</nav>   
+
+
+	<div id="main" class="container-fluid ">
+		<div class="row">
+			<div class="container col-xs-12 col-sm-6 col-md-3">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="input-group input-group-lg">
+						  <span class="input-group-addon" id="sizing-addon1">Top</span>
+						  <input type="number" class="form-control number" placeholder="Positions" aria-describedby="sizing-addon1">
+						</div>						
+					</div>
+					<div class="panel-body">
+						<ul class="list-group">
+						  <li class="list-group-item">Cras justo odio</li>
+						  <li class="list-group-item">Dapibus ac facilisis in</li>
+						  <li class="list-group-item">Morbi leo risus</li>
+						  <li class="list-group-item">Porta ac consectetur ac</li>
+						  <li class="list-group-item">Vestibulum at eros</li>
+						</ul>						
+					    <button type="button" class="btn btn-danger btn-block">Clear Database</button>				
+					</div>
+				</div>				
+			</div>
+			<div class="container col-xs-12 col-sm-6 col-md-9">
+				<div id="mainPanel" class="panel panel-default">
+					<div class="panel-heading"></div>
+					<div class="panel-body">
+						<div class="portlet">
+							<div class="portlet-title">
+								<div class="caption caption-red">
+									<i class="glyphicon glyphicon-bookmark"></i>
+								</div>
+								<ul id="mainMenu" class="nav nav-tabs text-center">
+									<li class="active">
+										<a data-target="#championship" data-toggle="tab">Championship</a>
+									</li>
+									<li>
+										<a data-target="#files" data-toggle="tab">Files</a>
+									</li>
+									<li>
+										<a data-target="#about" data-toggle="tab">About me</a>
+									</li>
+								</ul>
+							</div>
+							<div class="portlet-body">
+								<div class="tab-content">
+									<div class="tab-pane fade in active" id="championship">
+										Championship
+									</div>
+									<div class="tab-pane fade" id="files">
+										files
+									</div>
+									<div class="tab-pane fade" id="about">
+										About me
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>		
+		
+	</div>
+	<div ng-controller="top">
+
+		{{greeting}}
+	</div>
+	<nav class="navbar navbar-default navbar-fixed-bottom">		  
+		<div class="container navbar-header">		      
+			<h4 class="text-center">&copy; Manfred Artavia Gómez</h4>
+		</div>	     		   		     		        		   
+	</nav>   
+</body>
+</html>

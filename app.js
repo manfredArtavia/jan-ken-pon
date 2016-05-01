@@ -9,18 +9,23 @@ app.use(bodyParser.json());
 app.use(methodOverride());
 
 // Import Models and controllers
-var models     = require('./models/player')(app, mongoose);
-var PlayerCtrl = require('./controllers/players');
+var models     = require('./app/models/player')(app, mongoose);
+var PlayerCtrl = require('./app/controllers/players');
 var router = express.Router();
 
 router.get('/', function(req, res) {  
    res.send("Let's Rock!!!");
 });
 
+//Home page
+app.use(express.static(__dirname + "/public"));
+
 app.use(router);
 
 // API routes
 var players = express.Router();
+
+
 
 //save results
 players.route('/result')
@@ -39,14 +44,14 @@ mongoose.connect('mongodb://localhost/players', function(err, res) {
   if(err) {
     console.log('ERROR: connecting to Database. ' + err);
   }
-  app.listen(3000, function() {
+  /*app.listen(3000, function() {
     console.log("Node server running on http://localhost:3000");
-  });
+  });*/
 });
 
 // Start server
-/*
-var server = app.listen(process.env.PORT || 8080, function () {
+
+var server = app.listen(process.env.PORT || 3000, function () {
     var port = server.address().port;
     console.log("App now running on port", port);
-  });*/
+  });
