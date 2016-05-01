@@ -95,6 +95,8 @@ exports.newChampionship =  function(req,res){
 		exports.verifyPlayerRegister(champion[0],3); //store the score value of the champion
 		exports.verifyPlayerRegister(subChampion[0],1); //store the score value of the subchampion
 		
+		console.log(champion);
+		console.log(subChampion);
 		return res.status(200).jsonp({winner: champion});
 	}
 	else{

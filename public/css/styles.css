@@ -15,31 +15,37 @@
 }
 
 /*
-    main div wich is the container of the rest of divs
+    main div which is the container of the rest of divs
 */
 #main{
 	padding-top: 120px;
 }
 
 /*
-    for the input type number
+    input type number
 */
 .number{
 	width: 50px;
 }
 
 /*
-    
+    change the default color of all navbars
 */
 .navbar{
 	background-color: teal;
 	color: white;	
 }
 
+/*
+    container of the taps
+*/
 #mainMenu li{
 	width: 150px;
 }
 
+/*
+    panel which
+*/
 #mainPanel{
 	height: 360px;	
 }
@@ -49,7 +55,23 @@
 }
 
 /*
-    for the main panel which contains the tabs
+    accordion panel heading
+*/
+#accordion .panel-heading{
+    background-color: LightGrey;     
+}
+
+/*
+    title of the file examples
+*/
+#accordion .example-title:hover {
+    cursor: pointer; 
+    cursor: hand;    
+}
+
+
+/*
+    main panel which contains the tabs
 */
 #mainPanel .panel-body{    
     height: 545px;
@@ -65,11 +87,19 @@
     overflow-y: scroll;
 }
 
+/*
+    scroll disable
+*/
 .no-scroll{
     overflow-y: hidden;
 }
+
+/*
+    change panel-body classes inside files
+*/
 #files .panel-body{
-     overflow-y: auto;    
+     overflow-y: hidden;
+     overflow-x: auto;
      height: 50%;
 }
 /* 
