@@ -5,9 +5,9 @@ var Player  = mongoose.model('Player');
 /** 
 * Save the result of a championship, stores the player name and his respective score,
 * if some player exist the points will be added to his acumulated score.
-* @param player: Name of the player to save
-* @param points: Number of points to add
-* @param res: to send the response
+* @param player{Srting}: Name of the player to save
+* @param points{Integer}: Number of points to add
+* @param res{Object}: to send the response
 */
 exports.verifyPlayerRegister = function (player, points,res){
 	Player.findOne({ name: player}, function (err, reg){
@@ -16,8 +16,7 @@ exports.verifyPlayerRegister = function (player, points,res){
   			reg.save(function(err) {
 		        if (err){		        	
 		            return res.send(500,{"error" : err.message});		       
-		        }		       
-		        console.log(reg);
+		        }		       		        
 		    });  				    		    		   
   		}
   		else{
@@ -26,8 +25,7 @@ exports.verifyPlayerRegister = function (player, points,res){
 		        score: points
 		    });
 		    newPlayer.save(function(err, resp) {
-		        if(err) return res.status(500).send( err.message);
-		    console.log(newPlayer);		    
+		        if(err) return res.status(500).send( err.message);		      
 		    });
   		}
 	});
@@ -37,8 +35,8 @@ exports.verifyPlayerRegister = function (player, points,res){
 /** 
 * Get the player names and positions from the request and send it to verify if exist and save
 * the player data.
-* @param req: request with the result to store
-* @param res: to send the response
+* @param req{Object}: request with the result to store
+* @param res{Object}: to send the response
 */
 exports.saveResult = function(req, res){
 	var first = req.body.first,
@@ -53,86 +51,59 @@ exports.saveResult = function(req, res){
 /** 
 * Get the top of champions ordered in descending, if the request doesn't has a count parameter
 * then list the top 10, else the top of count sent in the request
-* @param req: request with the result to store
-* @param res: to send the response
+* @param req{Object}: request with the result to store
+* @param res{Object}: to send the response
 */
 exports.getTop = function(req, res){
 	var top = 10;
 	if(req.query.count){
 		top = req.query.count;		
-	}	
-	console.log("TOP: "+top);
-	Player.find().sort({score: 'descending'}).limit(parseInt(top)).exec(function(err, players){		
-        players.forEach( function(player) {
-    		console.log(player);
-    	});
+	}		
+	Player.find().sort({score: 'descending'}).limit(parseInt(top)).exec(function(err, players){		        
     	return res.status(200).jsonp({players: players});
 	});
 }
 
 /**
-* Start a new tournament
-* @param req{Object}: the request with the tournament structure
-* @param res: to send the response
+* Start a new championship
+* @param req{Object}: the request with the championship structure
+* @param res{Object}: to send the response
 */
 exports.newChampionship =  function(req,res){
-	/*tournament = [
-	[
-	[ ["Armando", "p"], ["Dave", "s"] ],
-	[ ["Richard", "R"], ["Michael", "S"] ]
-	],
-	[
-	[ ["Allen", "s"], ["Omer", "p"] ],
-	[ ["John", "r"], ["Robert", "p"] ]
-	]
-];*/
-	tournament = [
-	[
-		[
-			[ ["Shalke 04", "R"], ["Real Madrid", "S"] ],
-			[ ["Zenit", "R"], ["BVB", "P"] ]
-		],
-		[
-			[ ["Olympiacos", "R"], ["ManU", "P"] ],
-			[ ["Arsenal", "P"], ["Bayern", "S"] ]
-		]
-	],
-	[
-		[
-			[ ["City", "R"], ["Barca", "P"] ],
-			[ ["Milan", "P"], ["Atletico", "S"] ]
-		],
-		[
-			[ ["Leverksen", "T"], ["PSG", "P"] ],
-			[ ["Galatasaray", "P"], ["Chelsea", "S"] ],			
-		],
+	// if the request is valid
+	if(req.body.data !== undefined){
+		var championship = JSON.parse(req.body.data),		
+			result = championshipResult(championship) //championship result,
+			champion = [result[0],result[1]],
+			subChampion = [result[2],result[3]];
+		
+		exports.verifyPlayerRegister(champion[0],3); //store the score value of the champion
+		exports.verifyPlayerRegister(subChampion[0],1); //store the score value of the subchampion
+		
+		return res.status(200).jsonp({winner: champion});
+	}
+	else{
+		throw "Invalid request data";	
+	}
 
-	]
-]
-
-	var result =tournamentResult(tournament),
-	champion = [result[0],result[1]],
-	subChampion = [result[2],result[3]];;	
-	
-	console.log('Champion: '+ champion+"\n");
-	console.log('subChampion: '+ subChampion);
 }
 
 
 /** 
-* Get the result the tournament
-* @param req{Array}: the tournament to verify
-* @return res{Array}: the tournament result with four values, the name and strategy of each player,
+* Get the result the championship
+* @param req{Array}: the championship to verify
+* @return res{Array}: the championship result with four values, the name and strategy of each player,
 * ordered descending from Champion to Subchampion
 */
-function tournamentResult(tournament){   	
-	if(tournament.length != 2 || tournament.length != 4){
-		return "Bad Structure";
-	}
-	if (typeof tournament[0][0] === 'string') {
-    	return matchResult(tournament)
-	} 
-    return matchResult([tournamentResult(tournament[0]),tournamentResult(tournament[1])])	    
+function championshipResult(championship){   	
+	if(championship.length == 2 || championship.length == 4){
+		if (typeof championship[0][0] === 'string') {
+	    	return matchResult(championship)
+		} 
+	    return matchResult([championshipResult(championship[0]),championshipResult(championship[1])])	    
+    }else{
+    	throw  "Wrong championship structure";
+    }
 }
 
 /** 
@@ -146,7 +117,7 @@ function matchResult(match){
 	match[1][1] = match[1][1].toLowerCase();
 	console.log(match);
 	if(validStrategies(match[0][1]) && validStrategies(match[1][1])){
-		//player 1 wins if the result of the match is draw player 1 wins too
+		//player 1 wins. If the result of the match is draw player 1 wins too
 		if(match[0][1] === "r" && match[1][1] === "s" ||
 		   match[0][1] === "p" && match[1][1] === "r" ||
 		   match[0][1] === "s" && match[1][1] === "p" ||
@@ -176,7 +147,7 @@ function matchResult(match){
 		}
 	}
 	else
-		return "Invalid strategy";
+		throw "Invalid strategy on this match: "+ match.slice(0,2);
 }
 
 /** 

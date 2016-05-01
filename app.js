@@ -22,14 +22,17 @@ app.use(router);
 // API routes
 var players = express.Router();
 
+//save results
 players.route('/result')
   .post(PlayerCtrl.saveResult);
 
+// get the chapions top
 players.route('/top')
   .get(PlayerCtrl.getTop);
 
+// start a new championship
 players.route('/new')
-  .get(PlayerCtrl.newChampionship);
+  .post(PlayerCtrl.newChampionship);
 
 app.use('/api/championship', players);
 mongoose.connect('mongodb://localhost/players', function(err, res) {  
