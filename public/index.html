@@ -13,6 +13,8 @@
 	<script src="/app.js"></script>
 	<script src="/factories/top.factory.js"></script>
 	<script src="/controllers/top.controller.js"></script>
+	<script src="/factories/players.factory.js"></script>
+	<script src="/controllers/players.controller.js"></script>
 
 	<nav class="navbar navbar-default navbar-fixed-top">		  
 		<div class="container navbar-header">		      
@@ -37,8 +39,8 @@
 						  <li class="list-group-item text-center">{{player.name}}</li>						  
 						</ul>											    				
 					</div>
-					<div class="panel-footer">					
-					    <button type="button" class="btn btn-danger btn-block">Clear Database</button>				
+					<div class="panel-footer" ng-controller="PlayersController">					
+					    <button type="button" class="btn btn-danger btn-block" ng-click="clearDB()">Clear Database</button>				
 					</div>
 				</div>				
 			</div>

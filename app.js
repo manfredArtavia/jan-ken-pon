@@ -39,14 +39,15 @@ players.route('/top')
 players.route('/new')
   .post(PlayerCtrl.newChampionship);
 
+// clear the database
+players.route('/clear')
+  .get(PlayerCtrl.clearDB);
+
 app.use('/api/championship', players);
 mongoose.connect('mongodb://localhost/players', function(err, res) {  
   if(err) {
     console.log('ERROR: connecting to Database. ' + err);
   }
-  /*app.listen(3000, function() {
-    console.log("Node server running on http://localhost:3000");
-  });*/
 });
 
 // Start server

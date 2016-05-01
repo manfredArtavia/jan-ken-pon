@@ -3,11 +3,11 @@
 
     angular
         .module('jankenpon')
-        .factory('TopFactory', TopFactory);
+        .factory('PlayersFactory', PlayersFactory);
 
-    function TopFactory($http, $q) { 
+    function PlayersFactory($http, $q) { 
     	var factory = {
-            getTop: getTop
+            clearDB: clearDB
         };
 
         return factory;
@@ -16,13 +16,13 @@
 		* @param quantity{Integer}: number max of the top list
 		* @return promise{Object}: the top list to show 
 		*/
-	    function getTop(quantity) {
+	    function clearDB() {
 	        var defered = $q.defer();
 	        var promise = defered.promise;
-	        var url = '/api/championship/top?count=' + quantity;
 
-	        $http.get(url)
-	            .success(function(response) {	            	
+	        $http.get('/api/championship/clear')
+	            .success(function(response) {	
+	            	console.log(response);            	
 	                defered.resolve(response);
 	            })
 	            .error(function(err) {

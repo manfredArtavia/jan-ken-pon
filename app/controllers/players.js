@@ -64,6 +64,21 @@ exports.getTop = function(req, res){
 	});
 }
 
+
+/** 
+* Clear the database
+* @param req{Object}: request with the order 
+* @param res{Object}: to send the response
+*/
+exports.clearDB = function(req, res){
+	Player.remove({}, function(err) { 
+		if (err){		        	
+            return res.send(500,{"error" : err.message});		       
+        }
+  		return res.status(200).jsonp({status: 'success'});
+	});
+}
+
 /**
 * Start a new championship
 * @param req{Object}: the request with the championship structure
