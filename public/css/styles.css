@@ -1,20 +1,36 @@
+/*
+    for titles
+*/
 .title{
 	padding-top: 1%;
 	font-size: 20px;
 	color: white;	
 }
+
+/*
+    for headers
+*/
 .head{
 	background-color: #65A2FF; 
 }
 
+/*
+    main div wich is the container of the rest of divs
+*/
 #main{
 	padding-top: 120px;
 }
 
+/*
+    for the input type number
+*/
 .number{
 	width: 50px;
 }
 
+/*
+    
+*/
 .navbar{
 	background-color: teal;
 	color: white;	
@@ -29,25 +45,62 @@
 }
 
 #mainPanel .panel-heading{
-	background-color: teal ;
+	background-color: teal ;    
 }
 
+/*
+    for the main panel which contains the tabs
+*/
+#mainPanel .panel-body{    
+    height: 545px;
+}
+
+/*
+    body panels
+*/
 .panel-body {
-    height: 400px;
+    height: 445px;
     border: 1px solid #ddd;
     background: #f1f1f1;
     overflow-y: scroll;
 }
+
+.no-scroll{
+    overflow-y: hidden;
+}
+#files .panel-body{
+     overflow-y: auto;    
+     height: 50%;
+}
+/* 
+    textarea of files
+*/
+#files textarea{
+    resize: none;
+}
+
+.tab-content{
+     overflow-y: hidden;    
+}
+/*
+    list group for the top
+*/
 .list-group {
     height: auto;
 }
 
+/*
+    items in the list group for the top
+*/
 .list-group-item {
     margin-top:auto;
     margin-bottom: auto;
     padding: 6px 6px;
 }
 
+/*
+    responsive for smaller device
+*/
 @media only screen and (min-width:320px) and (max-width: 480px)  {
 	h1{
 		font-size: 20px;
@@ -55,16 +108,13 @@
 }
 
 
-
-
-
-
-
 /* Portlet */
 .portlet {
     background: #fff;
     padding: 20px;
 }
+
+
 
 /* Portlet Title */
 .portlet-title {

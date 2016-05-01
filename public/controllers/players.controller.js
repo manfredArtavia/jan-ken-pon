@@ -9,9 +9,9 @@
     	
     	$scope.clearDB = clearDB;
     	
-    	// get the top list
+    	// clear database
     	function clearDB(){
-	    	PlayersFactory.clearDB($scope.maxTop);	    	
+	    	PlayersFactory.clearDB();	            
         }        
     }
 })();		

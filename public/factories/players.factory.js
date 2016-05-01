@@ -11,10 +11,10 @@
         };
 
         return factory;
+	    
 	    /** 
-		* Get the top list of champions ordered descending
-		* @param quantity{Integer}: number max of the top list
-		* @return promise{Object}: the top list to show 
+		* Make the request to clear the database		
+		* @return promise{Object}: the status of the response
 		*/
 	    function clearDB() {
 	        var defered = $q.defer();
