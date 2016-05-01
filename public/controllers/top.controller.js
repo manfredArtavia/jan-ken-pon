@@ -3,9 +3,20 @@
 
     angular
         .module('jankenpon')
-        .controller('top', top);
+        .controller('TopController', TopController);
 
-    function top($scope) { 
-    	$scope.greeting = "Hello from the controller";
+    function TopController($scope, TopFactory) { 
+    	$scope.maxTop = 10;
+    	$scope.getTop = getTop;
+    	
+    	// get the top list
+    	function getTop(){
+	    	TopFactory.getTop($scope.maxTop)
+	    	.then(function (response) {                                
+	            $scope.players = response.players;
+	        }); 
+        }
+
+        getTop();
     }
 })();		

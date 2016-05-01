@@ -51,7 +51,7 @@ exports.saveResult = function(req, res){
 /** 
 * Get the top of champions ordered in descending, if the request doesn't has a count parameter
 * then list the top 10, else the top of count sent in the request
-* @param req{Object}: request with the result to store
+* @param req{Object}: request with the number of the top
 * @param res{Object}: to send the response
 */
 exports.getTop = function(req, res){
