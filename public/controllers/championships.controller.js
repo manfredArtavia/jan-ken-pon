@@ -15,16 +15,17 @@
         function readFile() {
             try {
                 var fileReader = new FileReader();
+
                 fileReader.onload = function () {                                        
                     ChampionshipsFactory.startChampionship(this.result)
-                    .then(function (response) { 
-                    console.log(response);
+                    .then(function (response) {                     
                     $scope.result = "The champion is "+response.winner[0]+",\n using "+response.winner[1].toUpperCase()+" strategy.";
-                    document.getElementById("showResultBtn").click();
+                    document.getElementById("showResultBtn").click();//show modal with the result
 
                     $scope.champion = response;                                                               
                  })            
-                }                
+                }
+
                 fileReader.readAsText(this.files[0]);
             } catch(e) {                
                 return e;         

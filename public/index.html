@@ -39,7 +39,8 @@
 						</div>						
 					</div>
 					<div class="panel-body">
-						<ul class="list-group" ng-repeat="player in players">
+						<p class=" text-primary">{{topMessage}}<p>
+						<ul class="list-group" ng-repeat="player in players">											
 							<li class="list-group-item text-center">{{player.name}}</li>						  
 						</ul>											    				
 					</div>
@@ -105,9 +106,7 @@
 												<button id="showResultBtn" type="button" data-toggle="modal" data-target="#modal-result"></button>
 											</span>	
 											<div id="modal-result" class="modal fade" role="dialog">
-											  <div class="modal-dialog">
-
-											    <!-- Modal content-->
+											  <div class="modal-dialog">											    
 											    <div class="modal-content">
 											      <div class="modal-header">
 											        <button type="button" class="close" data-dismiss="modal">&times;</button>

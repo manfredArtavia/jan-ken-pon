@@ -8,24 +8,25 @@
     function TopController($scope, TopFactory) { 
     	$scope.maxTop = 10;
     	$scope.getTop = getTop;
-    	$scope.clearDB = clearDB;
-        $scope.sayHello = sayHello;/////
-
-        function sayHello (argument) {
-             console.log('hello');
-        }//////
+    	$scope.clearDB = clearDB;    
     	
     	/** 
         * Use the top factory to  get the top of champions,
         * if the top to show is 0 don't make request and clear the top        
         */
-    	function getTop(){               
+    	function getTop(){         
+            $scope.topMessage = "";
             if($scope.maxTop === 0 ){
                 $scope.players = [];
+                $scope.topMessage = "No champions to show."
             }else {
                 TopFactory.getTop($scope.maxTop)
                 .then(function (response) {                                
                     $scope.players = response.players;
+                    console.log(response.players.length);
+                    if(response.players.length === 0){                        
+                        $scope.topMessage = "No champions to show."
+                    }
                 });    
             }	    	
         }
@@ -36,6 +37,7 @@
     	function clearDB(){
 	    	TopFactory.clearDB();	
             $scope.players = [];
+            $scope.topMessage = "No champions to show."
         }  
 
         getTop();

@@ -11,23 +11,23 @@ var Player  = mongoose.model('Player');
 */
 exports.verifyPlayerRegister = function (player, points,res){
 	Player.findOne({ name: player}, function (err, reg){		
-  		if(reg){  			  			
-  			reg.score += points;
-  			reg.save(function(err) {
-		        if (err){		        	
-		            return res.send(500,{"error" : err.message});		       
-		        }		       		        
-		    });  				    		    		   
-  		}
-  		else{
-  			var newPlayer =  new Player({
-		        name: player,
-		        score: points
-		    });
-		    newPlayer.save(function(err, resp) {
-		        if(err) return res.status(500).send( err.message);		      
-		    });
-  		}
+		if(reg){  			  			
+			reg.score += points;
+			reg.save(function(err) {
+				if (err){		        	
+					return res.send(500,{"error" : err.message});		       
+				}		       		        
+			});  				    		    		   
+		}
+		else{
+			var newPlayer =  new Player({
+				name: player,
+				score: points
+			});
+			newPlayer.save(function(err, resp) {
+				if(err) return res.status(500).send( err.message);		      
+			});
+		}
 	});
 }
 
@@ -40,7 +40,7 @@ exports.verifyPlayerRegister = function (player, points,res){
 */
 exports.saveResult = function(req, res){
 	var first = req.body.first,
-		second = req.body.second;	
+	second = req.body.second;	
 	exports.verifyPlayerRegister(first,3,res); //request to save first place with 3 points
 	exports.verifyPlayerRegister(second,1,res); //request to save second place with 1 point
 
@@ -59,7 +59,7 @@ exports.getTop = function(req, res){
 		top = req.query.count;		
 	}		
 	Player.find().sort({score: 'descending'}).limit(parseInt(top)).exec(function(err, players){		        
-    	return res.status(200).jsonp({players: players});
+		return res.status(200).jsonp({players: players});
 	});
 }
 
@@ -72,9 +72,9 @@ exports.getTop = function(req, res){
 exports.clearDB = function(req, res){
 	Player.remove({}, function(err) { 
 		if (err){		        	
-            return res.send(500,{"error" : err.message});		       
-        }
-  		return res.status(200).jsonp({status: 'success'});
+			return res.send(500,{"error" : err.message});		       
+		}
+		return res.status(200).jsonp({status: 'success'});
 	});
 }
 
@@ -86,19 +86,23 @@ exports.clearDB = function(req, res){
 exports.newChampionship =  function(req,res){
 	// if the request is valid
 	if(req.body.data !== undefined){
-		var championship = JSON.parse(req.body.data),		
+		try {
+			var championship = JSON.parse(req.body.data),		
 			result = championshipResult(championship) //championship result,
 			champion = [result[0],result[1]],
 			subChampion = [result[2],result[3]];
-		
-		exports.verifyPlayerRegister(champion[0],3); //store the score value of the champion
-		exports.verifyPlayerRegister(subChampion[0],1); //store the score value of the subchampion
-				
-		return res.status(200).jsonp({winner: champion});
-	}
-	else{
+
+			exports.verifyPlayerRegister(champion[0],3); //store the score value of the champion
+			exports.verifyPlayerRegister(subChampion[0],1); //store the score value of the subchampion
+
+		return res.status(200).jsonp({winner: champion});	
+	} catch(e) {		
 		throw "Invalid request data";	
-	}
+	}		
+}
+else{
+	throw "Invalid request data";	
+}
 
 }
 
@@ -112,12 +116,12 @@ exports.newChampionship =  function(req,res){
 function championshipResult(championship){   	
 	if(championship.length == 2 || championship.length == 4){
 		if (typeof championship[0][0] === 'string') {
-	    	return matchResult(championship)
+			return matchResult(championship)
 		} 
-	    return matchResult([championshipResult(championship[0]),championshipResult(championship[1])])	    
-    }else{
-    	throw  "Wrong championship structure";
-    }
+		return matchResult([championshipResult(championship[0]),championshipResult(championship[1])])	    
+	}else{
+		throw  "Wrong championship structure";
+	}
 }
 
 /** 
@@ -132,31 +136,31 @@ function matchResult(match){
 	if(validStrategies(match[0][1]) && validStrategies(match[1][1])){
 		//player 1 wins. If the result of the match is draw player 1 wins too
 		if(match[0][1] === "r" && match[1][1] === "s" ||
-		   match[0][1] === "p" && match[1][1] === "r" ||
-		   match[0][1] === "s" && match[1][1] === "p" ||
-		   match[0][1] === match[1][1]){	   		   
+			match[0][1] === "p" && match[1][1] === "r" ||
+			match[0][1] === "s" && match[1][1] === "p" ||
+			match[0][1] === match[1][1]){	   		   
 
-		   if(match[0].length < 3){
-			   match[0].push(match[1][0])
-			   match[0].push(match[1][1])
+			if(match[0].length < 3){
+				match[0].push(match[1][0])
+				match[0].push(match[1][1])
 			}
 			else {
 				match[0][2] = match[1][0];
 				match[0][3] = match[1][1];
 			}		
-		   return match[0];
+			return match[0];
 		}		
 		//player 2 wins	
 		else{			
 			if(match[1].length < 3){
-			   match[1].push(match[0][0])
-			   match[1].push(match[0][1])
+				match[1].push(match[0][0])
+				match[1].push(match[0][1])
 			}
 			else {
 				match[1][2] = match[0][0];
 				match[1][3] = match[0][1];
 			}	
-		   	return match[1];
+			return match[1];
 		}
 	}
 	else
@@ -171,16 +175,16 @@ function matchResult(match){
 function validStrategies(strategy) {	
 	switch (strategy) {
 		case "r":
-			return true
-			break;
+		return true
+		break;
 		case "s":
-			return true
-			break;
+		return true
+		break;
 		case "p":
-			return true
-			break;
+		return true
+		break;
 		default:
-			return false
-			break;
+		return false
+		break;
 	}
 }
