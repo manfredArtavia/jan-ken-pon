@@ -10,8 +10,8 @@ var Player  = mongoose.model('Player');
 * @param res{Object}: to send the response
 */
 exports.verifyPlayerRegister = function (player, points,res){
-	Player.findOne({ name: player}, function (err, reg){
-  		if(reg){  			
+	Player.findOne({ name: player}, function (err, reg){		
+  		if(reg){  			  			
   			reg.score += points;
   			reg.save(function(err) {
 		        if (err){		        	
@@ -40,8 +40,7 @@ exports.verifyPlayerRegister = function (player, points,res){
 */
 exports.saveResult = function(req, res){
 	var first = req.body.first,
-		second = req.body.second;
-
+		second = req.body.second;	
 	exports.verifyPlayerRegister(first,3,res); //request to save first place with 3 points
 	exports.verifyPlayerRegister(second,1,res); //request to save second place with 1 point
 
@@ -94,9 +93,7 @@ exports.newChampionship =  function(req,res){
 		
 		exports.verifyPlayerRegister(champion[0],3); //store the score value of the champion
 		exports.verifyPlayerRegister(subChampion[0],1); //store the score value of the subchampion
-		
-		console.log(champion);
-		console.log(subChampion);
+				
 		return res.status(200).jsonp({winner: champion});
 	}
 	else{
@@ -131,8 +128,7 @@ function championshipResult(championship){
 */
 function matchResult(match){	
 	match[0][1] = match[0][1].toLowerCase();
-	match[1][1] = match[1][1].toLowerCase();
-	console.log(match);
+	match[1][1] = match[1][1].toLowerCase();	
 	if(validStrategies(match[0][1]) && validStrategies(match[1][1])){
 		//player 1 wins. If the result of the match is draw player 1 wins too
 		if(match[0][1] === "r" && match[1][1] === "s" ||

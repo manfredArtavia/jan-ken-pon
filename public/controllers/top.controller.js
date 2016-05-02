@@ -9,12 +9,17 @@
     	$scope.maxTop = 10;
     	$scope.getTop = getTop;
     	$scope.clearDB = clearDB;
+        $scope.sayHello = sayHello;/////
+
+        function sayHello (argument) {
+             console.log('hello');
+        }//////
     	
     	/** 
         * Use the top factory to  get the top of champions,
         * if the top to show is 0 don't make request and clear the top        
         */
-    	function getTop(){   
+    	function getTop(){               
             if($scope.maxTop === 0 ){
                 $scope.players = [];
             }else {
