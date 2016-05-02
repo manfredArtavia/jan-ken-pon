@@ -14,8 +14,8 @@
 	<script src="/factories/top.factory.js"></script>
 	<script src="/controllers/top.controller.js"></script>
 	
-	<script src="/factories/players.factory.js"></script>
-	<script src="/controllers/players.controller.js"></script>
+	<script src="/factories/championships.factory.js"></script>
+	<script src="/controllers/championships.controller.js"></script>
 
 	<script src="/controllers/files.controller.js"></script>	
 
@@ -70,8 +70,9 @@
 								</div>
 								<div class="portlet-body">
 									<div class="tab-content">
-										<div class="tab-pane fade in active" id="championship">
-											Championship
+										<div class="tab-pane fade in active" id="championship" ng-controller="ChampionshipsController">
+										<input type="file" id="openFile" ng-click="readFile()"></input>
+											{{champion}}
 										</div>
 										<div id="files" class="tab-pane fade" ng-controller="FilesController">
 											<center>		
@@ -90,7 +91,7 @@
 																<label>{{file.description}}</label>
 																<br>
 																<span  class="btn btn-success glyphicon glyphicon-download-alt
-" ng-click="saveTextAsFile(file.championship, file.title)"></span>
+" ng-click="downloadTextAsFile(file.championship, file.title)"></span>
 															</div>
 														</div>
 													</div>

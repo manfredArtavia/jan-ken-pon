@@ -5,7 +5,7 @@
         .module('jankenpon')
         .controller('TopController', TopController);
 
-    function TopController($scope, TopFactory, PlayersFactory) { 
+    function TopController($scope, TopFactory) { 
     	$scope.maxTop = 10;
     	$scope.getTop = getTop;
     	$scope.clearDB = clearDB;
@@ -29,7 +29,7 @@
 		* Use the players factory to clear the database of players and then clear the top 
         */
     	function clearDB(){
-	    	PlayersFactory.clearDB();	
+	    	TopFactory.clearDB();	
             $scope.players = [];
         }  
 

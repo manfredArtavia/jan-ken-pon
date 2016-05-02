@@ -7,7 +7,8 @@
 
     function TopFactory($http, $q) { 
     	var factory = {
-            getTop: getTop
+            getTop: getTop,
+            clearDB: clearDB
         };
 
         return factory;
@@ -23,6 +24,26 @@
 
 	        $http.get(url)
 	            .success(function(response) {	            	
+	                defered.resolve(response);
+	            })
+	            .error(function(err) {
+	                defered.reject(err);
+	            });
+
+	        return defered.promise;
+	    }
+
+	    /** 
+		* Make the request to clear the database		
+		* @return promise{Object}: the status of the response
+		*/
+	    function clearDB() {
+	        var defered = $q.defer();
+	        var promise = defered.promise;
+
+	        $http.get('/api/championship/clear')
+	            .success(function(response) {	
+	            	console.log(response);            	
 	                defered.resolve(response);
 	            })
 	            .error(function(err) {

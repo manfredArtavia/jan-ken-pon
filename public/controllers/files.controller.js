@@ -5,7 +5,9 @@
 	.controller('FilesController',FilesController);
 
 	function FilesController ($scope) {	
-		$scope.saveTextAsFile = saveTextAsFile;
+		$scope.downloadTextAsFile = downloadTextAsFile;
+		
+		// array with the examples files content
 		$scope.files = [
 			{
 				id: "example1",
@@ -62,8 +64,15 @@
 		 	}
 		]
 
-		function saveTextAsFile(championship, exampleName)
-			{
+		/** 
+		* Download a file with the content and name gave.
+		* make an 'a' tag to download the text file. 
+		* A way to leave a side a library
+		* @param championship{String}: the content of the file
+		* @param exampleName{String}: the name of the file
+		*/
+		function downloadTextAsFile(championship, exampleName)
+		{
 			    var fileContent = new Blob([championship], {type:'text/plain'}),
 				    link = document.createElement("a");
 
