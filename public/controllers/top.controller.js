@@ -17,8 +17,7 @@
     	function getTop(){         
             $scope.topMessage = "";
             if($scope.maxTop === 0 ){
-                $scope.players = [];
-                $scope.topMessage = "No champions to show."
+                $scope.players = [];                
             }else {
                 TopFactory.getTop($scope.maxTop)
                 .then(function (response) {                                
