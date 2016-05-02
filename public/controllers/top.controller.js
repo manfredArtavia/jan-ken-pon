@@ -22,8 +22,7 @@
             }else {
                 TopFactory.getTop($scope.maxTop)
                 .then(function (response) {                                
-                    $scope.players = response.players;
-                    console.log(response.players.length);
+                    $scope.players = response.players;                    
                     if(response.players.length === 0){                        
                         $scope.topMessage = "No champions to show."
                     }

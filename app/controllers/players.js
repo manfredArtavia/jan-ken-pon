@@ -88,20 +88,20 @@ exports.newChampionship =  function(req,res){
 	if(req.body.data !== undefined){
 		try {
 			var championship = JSON.parse(req.body.data),		
-			result = championshipResult(championship) //championship result,
-			champion = [result[0],result[1]],
-			subChampion = [result[2],result[3]];
+				result = championshipResult(championship) //championship result,
+				champion = [result[0],result[1]],
+				subChampion = [result[2],result[3]];				
 
 			exports.verifyPlayerRegister(champion[0],3); //store the score value of the champion
 			exports.verifyPlayerRegister(subChampion[0],1); //store the score value of the subchampion
 
 		return res.status(200).jsonp({winner: champion});	
 	} catch(e) {		
-		throw "Invalid request data";	
+		throw  ""+e; //to show an error in shortest way
 	}		
 }
 else{
-	throw "Invalid request data";	
+	throw "Exception: Invalid request data is undefined";	
 }
 
 }
@@ -120,7 +120,7 @@ function championshipResult(championship){
 		} 
 		return matchResult([championshipResult(championship[0]),championshipResult(championship[1])])	    
 	}else{
-		throw  "Wrong championship structure";
+		throw  "Exception: Wrong championship structure";
 	}
 }
 
@@ -164,7 +164,7 @@ function matchResult(match){
 		}
 	}
 	else
-		throw "Invalid strategy on this match: "+ match.slice(0,2);
+		throw "Exception: Invalid strategy on this match: "+ match.slice(0,2);
 }
 
 /** 

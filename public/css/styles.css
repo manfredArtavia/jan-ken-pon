@@ -14,6 +14,16 @@
 }
 
 /*
+    about paragraphs
+*/
+.aboutText{
+    white-space: normal;
+    text-align: justify;
+    -moz-text-align-last: center; /* Firefox 12+ */
+    text-align-last: center;    
+}
+
+/*
     main div which is the container of the rest of divs
 */
 #main{
