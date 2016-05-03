@@ -54,11 +54,15 @@ exports.saveResult = function(req, res){
 * @param res{Object}: to send the response
 */
 exports.getTop = function(req, res){
-	var top = 10;
+	var top = 10,
+	players = [];
 	if(req.query.count){
 		top = req.query.count;		
 	}		
-	Player.find().sort({score: 'descending'}).limit(parseInt(top)).exec(function(err, players){		        
+	Player.find().sort({score: 'descending'}).limit(parseInt(top)).select('name').exec(function(err, qPlayers){		        
+		qPlayers.forEach( function(player) {
+			players.push(player.name);
+		});
 		return res.status(200).jsonp({players: players});
 	});
 }
