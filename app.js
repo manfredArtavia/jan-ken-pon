@@ -8,12 +8,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());  
 app.use(methodOverride());
 
+// // Connection to DB
+// mongoose.connect('mongodb://manfredartavia-3242:leF8E_cr4bVxW_r-E11R@manfredartavia-3242.mongo.dbs.appsdeck.eu:30419/manfredartavia-3242', function(err, res) {
+//   if(err) throw err;
+//   console.log('Connected to Database');
+// });
 // Connection to DB
-mongoose.connect('mongodb://manfredartavia-3242:leF8E_cr4bVxW_r-E11R@manfredartavia-3242.mongo.dbs.appsdeck.eu:30419/manfredartavia-3242', function(err, res) {
-  if(err) throw err;
-  console.log('Connected to Database');
+mongoose.connect('mongodb://localhost/players', function(err, res) {  
+  if(err) {
+    console.log('ERROR: connecting to Database. ' + err);
+  }
 });
-
 // Import Models and controllers
 var models     = require('./app/models/player')(app, mongoose);
 var PlayerCtrl = require('./app/controllers/players');
