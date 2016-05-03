@@ -40,16 +40,6 @@
 	    function clearDB() {
 	        var defered = $q.defer();
 	        var promise = defered.promise;
-
-	        // $http.get('/api/championship/clear')
-	        //     .success(function(response) {	
-	        //     	console.log(response);            	
-	        //         defered.resolve(response);
-	        //     })
-	        //     .error(function(err) {
-	        //         defered.reject(err);
-	        //     });
-
 	            $http({
 	            	method: 'DELETE',
 	            	url: '/api/championship/clear',
