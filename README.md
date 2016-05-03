@@ -7,7 +7,7 @@ A restful API to play the traditional game of rock-paper-scissors in single matc
 2.  **Clone this repository:**
   * "$ git clone https://github.com/manfredArtavia/jan-ken-pon.git"
 2.  **Run the mongod service with the terminal:**
-  * Move to the bin folder inside the mongo installation folder "cd <Installation Path>/mongo/bin"
+  * Move to the bin folder inside the mongo installation folder "cd (Installation Path)/mongo/bin"
   * Run the command "mongod"
 3.  **Move to the project path with the terminal:**
   * "$ cd <ProjectPath>"
