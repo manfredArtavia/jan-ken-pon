@@ -32,8 +32,7 @@
 
 				defered.resolve(response);
 			})
-			.error(function(err) {
-				console.log(err);
+			.error(function(err) {				
 				defered.reject(err);
 			});
 

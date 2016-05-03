@@ -1,10 +1,20 @@
 
 <div>
-	<p class="text-primary title font-Fjalla text-center">Technologies &nbsp;</p>			
-	<p class="sub-title text-center">
-		Justification
+	<p class="text-primary title font-Fjalla text-center">Technologies Justification</p>			
+	<p class="about-text">
+		One of the reasons is the simplicity of the data to store, the system only stores one collection, and mongoDB offers a light option to store data with few space and simple to use. Another reason is use JSON everywhere, and the JSON works fine with AngularJS which supply an easy way of data rendering. To model data Mongoose is a good option because it works with schemas to maintain a good structure for save, update and delete data from collections.
+		The reason of choose NodeJS is that it has a good management of No-SQL databases. About the host server, Scalingo was selected, which offers a free service for one month, that it’s good for the deployment of demos and has a good support for mean stack applications.In the front end bootstrap it’s a very good option to quickly design and friendly with the user.
+		Finally the full stack is faster and lighter than other options.
 	</p>
-	<p>
+	<p class="text-primary title font-Fjalla text-center">Solution</p>	
+	<p class="about-text">
+		The championship has a structure of a binary tree, that is processed recursively, cutting the tournament in single match (a simple array with two arrays inside) and in each iteration evaluates if the structure is correct, if its correct send the match to evaluate who is the winner; (if exist a draw the winner will be the first in the match array), and returns an array which contains four values, name of the winner, winner strategy, name of the loser and loser strategy, if the player never won a match and wins one, the values of the loser will be added to the array of the winner in case of the winner won other times, the values of the old loser will be changed for the values of the new loser for example:
+		<p>
+		<span class="sub-title2 .def-text">Entry: </span> <p>[[“Robert”,”P”],[“Allan”,”S”]]</p>
+		<span class="sub-title2 .def-text">Output: </span> <p>[“Allan”,”S”,”Robert”,”P”]</p>
+		</p>
+		<p class="about-text">Finally, the result array is separated in two different arrays and are sent to save.</p>
 		
+
 	</p>
 </div>

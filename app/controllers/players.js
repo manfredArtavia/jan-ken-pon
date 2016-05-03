@@ -112,8 +112,9 @@ exports.newChampionship =  function(req,res){
 
 /** 
 * Get the result the championship
-* @param req{Array}: the championship to verify
-* @return res{Array}: the championship result with four values, the name and strategy of each player,
+* @param championship{Array}: the championship to verify
+* @param res{Object}:  to send an error exist
+* @return matchResult{Array}: the championship result with four values, the name and strategy of each player,
 * ordered descending from Champion to Subchampion
 */
 function championshipResult(championship,res){   	
@@ -129,8 +130,9 @@ function championshipResult(championship,res){
 
 /** 
 * Get the result of a single match and convert to lower case the strategy of each player
-* @param req{Array}: the match to verify
-* @return res{Array}: a single array with four values, the name and strategy of each player,
+* @param match{Array}: the match to verify
+* @param res{Object}:  to send an error exist
+* @return match{Array}: a single array with four values, the name and strategy of each player,
 * ordered descending from winner to loser
 */
 function matchResult(match,res){	
@@ -174,7 +176,7 @@ function matchResult(match,res){
 /** 
 * Validate if the strategy is correct
 * @param req{String}: Strategy to validate
-* @return res{Bool}: true if its correct, false if its incorrect
+* @return {Bool}: true if its correct, false if its incorrect
 */
 function validStrategies(strategy) {	
 	switch (strategy) {
