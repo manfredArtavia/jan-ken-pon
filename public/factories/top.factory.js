@@ -23,7 +23,7 @@
 	        var url = '/api/championship/top?count=' + quantity;
 
 	        $http.get(url)
-	            .success(function(response) {	            	
+	            .success(function(response) {	            		            	
 	                defered.resolve(response);
 	            })
 	            .error(function(err) {

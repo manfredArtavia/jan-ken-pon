@@ -7,6 +7,7 @@
        font-size: 22px;	    
    }
    .sub-title{
+    font-weight: 800;
     padding-top: 1%;
     font-size: 18px;   
     font-family: 'Fjalla One', sans-serif;
@@ -42,16 +43,19 @@
     .about-text{
         white-space: normal;
         text-align: justify;
-        -moz-text-align-last: center; /* Firefox 12+ */   
-        font-family: 'Raleway', sans-serif;  
+        -moz-text-align-last: center; /* Firefox 12+ */  
+        font-family: 'Raleway', sans-serif;          
+    }
+
+    #aboutme .about-text{
+        text-align-last:center;
     }
 
 /*
     definition paragraphs
     */
     .def-text{
-        white-space: normal;
-        
+        white-space: normal;        
         -moz-text-align-last: center; /* Firefox 12+ */
         text-align-last: center;    
         font-family: 'Raleway', sans-serif;  

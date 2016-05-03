@@ -88,24 +88,27 @@ exports.newChampionship =  function(req,res){
 	if(req.body.data !== undefined){
 		try {
 			var championship = JSON.parse(req.body.data),		
-				result = championshipResult(championship) //championship result,
+				result = championshipResult(championship,res), //championship result,				
 				champion = [result[0],result[1]],
 				subChampion = [result[2],result[3]];				
+			
+			if (result.length === 4){ // a correct result not an error
+				exports.verifyPlayerRegister(champion[0],3); //store the score value of the champion
+				exports.verifyPlayerRegister(subChampion[0],1); //store the score value of the subchampion
+			}
 
-			exports.verifyPlayerRegister(champion[0],3); //store the score value of the champion
-			exports.verifyPlayerRegister(subChampion[0],1); //store the score value of the subchampion
+			return res.status(200).jsonp({winner: champion});	
+		}catch(e) {										
+			return res.status(500).send(""+e);
+			
+		}		
+	}
+	else{
+		return res.status(500).send("Exception: Invalid request data is undefined");	
+	}
 
-		return res.status(200).jsonp({winner: champion});	
-	} catch(e) {		
-		throw  ""+e; //to show an error in shortest way
-	}		
+
 }
-else{
-	throw "Exception: Invalid request data is undefined";	
-}
-
-}
-
 
 /** 
 * Get the result the championship
@@ -113,14 +116,14 @@ else{
 * @return res{Array}: the championship result with four values, the name and strategy of each player,
 * ordered descending from Champion to Subchampion
 */
-function championshipResult(championship){   	
+function championshipResult(championship,res){   	
 	if(championship.length == 2 || championship.length == 4){
 		if (typeof championship[0][0] === 'string') {
-			return matchResult(championship)
+			return matchResult(championship,res)
 		} 
 		return matchResult([championshipResult(championship[0]),championshipResult(championship[1])])	    
-	}else{
-		throw  "Exception: Wrong championship structure";
+	}else{		
+		return res.status(500).send("Exception: Wrong championship structure");				
 	}
 }
 
@@ -130,7 +133,7 @@ function championshipResult(championship){
 * @return res{Array}: a single array with four values, the name and strategy of each player,
 * ordered descending from winner to loser
 */
-function matchResult(match){	
+function matchResult(match,res){	
 	match[0][1] = match[0][1].toLowerCase();
 	match[1][1] = match[1][1].toLowerCase();	
 	if(validStrategies(match[0][1]) && validStrategies(match[1][1])){
@@ -163,8 +166,9 @@ function matchResult(match){
 			return match[1];
 		}
 	}
-	else
-		throw "Exception: Invalid strategy on this match: "+ match.slice(0,2);
+	else{
+		return res.status(500).send("Exception: Invalid strategy on this match: "+ match);		
+	}
 }
 
 /** 

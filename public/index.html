@@ -45,7 +45,7 @@
 					</div>
 					<div class="panel-body">
 						<p class=" text-primary">{{topMessage}}<p>
-						<ul class="list-group" ng-repeat="player in players">											
+						<ul class="list-group" ng-repeat="player in players">										
 							<li class="list-group-item text-center">{{player.name}}</li>						  
 						</ul>											    				
 					</div>
@@ -197,6 +197,12 @@
 										</center>
 									</div>
 									<!-- End Files Examples sections -->
+									
+									<!-- About Solution -->
+									<div id="solution" class="tab-pane fade text-left">
+										<div ng-include="'/views/aboutSolution.htm'"></div>
+									</div>		
+									<!-- End of About Solution -->
 
 									<!-- About API section -->
 									<div id="api" class="tab-pane fade text-left">
@@ -206,7 +212,7 @@
 
 									<!-- About section -->
 									<div id="aboutme" class="tab-pane fade">
-										<div ng-include="'/views/aboutme.htm'"></div>
+										<div ng-include="'/views/aboutMe.htm'"></div>
 									</div>
 									<!-- End of Files Examples section -->
 								</div>

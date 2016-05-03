@@ -28,10 +28,12 @@
 				url: '/api/championship/new',
 				data: data
 			})
-			.success(function(response) {							
+			.success(function(response) {
+
 				defered.resolve(response);
 			})
 			.error(function(err) {
+				console.log(err);
 				defered.reject(err);
 			});
 
