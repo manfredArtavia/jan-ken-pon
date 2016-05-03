@@ -1,0 +1,100 @@
+
+<div>
+<p class="text-primary title font-Fjalla text-center">REST API &nbsp;</p>			
+<p class="def-text">
+The API must contain mandatory 2 resources and 1 optional. Find the specification of the web services below:					
+<p class="sub-title text-center">POST api/championship/result</p>
+<p class="about-text">Stores the first and second place of a tournament, each user is stored with their respective scores. The user names will be unique, but the same user can win 1 or more championships. Returns the operation status if successfully.</p>
+<p class="sub-title2" class="about-text">Resource information:</p>
+<p><span class="sub-title2 .def-text"> Resource URL:</span> /api/championship/result</p>
+<p><span class="sub-title2 .def-text"> HTTP Method:</span> POST</p>
+<p><span class="sub-title2 .def-text"> Response format:</span> JSON</p>
+<p class="sub-title2 .def-text"> Parameters:</p>		
+<p>													
+	<span class="sub-title2 .def-text"> First (required):</span>
+	The name of the winner of the championship.Example: Dave
+	<br>
+	<span class="sub-title2 .def-text"> Secondirst (required):</span> The name of the second place of the championship.
+</p>
+<p class="sub-title2 .def-text"> Example Request:</p>	
+<p>													
+	<span class="sub-title2 .def-text"> POST:</span>
+	<!-- http://<mypublicserver.com>/api/championship/result -->
+	<br>
+	<span class="sub-title2 .def-text"> POSTData:</span> first=Dave&second=Armando
+</p>
+<p>													
+	<span class="sub-title2 .def-text"> Example Output</span>
+	{status: 'success'}
+</p>
+
+
+<!-- GET api/championship/top -->
+
+<p class="sub-title text-center">GET api/championship/top</p>
+<p class="about-text">Retrieves the top players of all championships. Returns the list of player names based on the count provided.</p>
+<p class="sub-title2" class="about-text">Resource information:</p>
+<p><span class="sub-title2 .def-text"> Resource URL:</span> /api/championship/top</p>
+<p><span class="sub-title2 .def-text"> HTTP Method:</span> GET</p>
+<p><span class="sub-title2 .def-text"> Response format:</span> JSON</p>
+<p class="sub-title2 .def-text"> Parameters:</p>		
+<p>													
+	<span class="sub-title2 .def-text"> Count (optional):</span>
+	Sets the count of records to be retrieved. If not provided, the default value is 10. Example: 123
+	<br>
+</p>
+<p class="sub-title2 .def-text"> Example Request:</p>	
+<p>													
+	<span class="sub-title2 .def-text"> GET:</span>
+	<!-- http://<mypublicserver.com>/api/championship/top?count=10	 -->
+</p>
+<p>													
+	<span class="sub-title2 .def-text"> Example Output</span>
+	{players: ["Dave", "Armando", "Robert"]}
+</p>
+
+<!-- POST api/championship/new -->
+<p class="sub-title text-center">POST api/championship/new</p>
+<p class="about-text">Receives the championship data and computes it to identify the winner. The first and second place are stored into a database with their respective scores. Returns the winner of the championship.</p>
+<p class="sub-title2" class="about-text">Resource information:</p>
+<p><span class="sub-title2 .def-text"> Resource URL:</span> /api/championship/new</p>
+<p><span class="sub-title2 .def-text"> HTTP Method:</span> POST</p>
+<p><span class="sub-title2 .def-text"> Response format:</span> JSON</p>
+<p class="sub-title2 .def-text"> Parameters:</p>		
+<p>													
+	<span class="sub-title2 .def-text"> data (mandatory):</span>
+	The data of the championship following the bracketed array standard. Example:[["Armando", "P"],["Dave", "S"]]
+	<br>
+</p>
+<p class="sub-title2 .def-text"> Example Request:</p>	
+<p>													
+	<span class="sub-title2 .def-text"> POST:</span>
+	<!-- http://<mypublicserver.com>/api/championship/new -->
+	
+	<span class="sub-title2 .def-text"> POSTData:</span> data=[["Armando", "P"],["Dave", "S"]]
+</p>
+<p>													
+	<span class="sub-title2 .def-text"> Example Output</span>
+	{ winner: ["Dave", "S"] }
+</p>
+
+
+<!-- DELETE api/championship/clean -->
+<p class="sub-title text-center">DELETE api/championship/clean</p>
+<p class="about-text">Receive the request to clean up the database</p>
+<p class="sub-title2" class="about-text">Resource information:</p>
+<p><span class="sub-title2 .def-text"> Resource URL:</span> /api/championship/clean</p>
+<p><span class="sub-title2 .def-text"> HTTP Method:</span> DELETE</p>
+<p><span class="sub-title2 .def-text"> Response format:</span> JSON</p>
+<p class="sub-title2 .def-text"> Parameters: No</p>		
+<p class="sub-title2 .def-text"> Example Request:</p>	
+<p>													
+	<span class="sub-title2 .def-text"> POST:</span>
+	http://<mypublicserver.com>/api/championship/clean
+	<br>
+</p>
+<p>													
+	<span class="sub-title2 .def-text"> Example Output</span>
+	{ status: 'success' }
+</p>
+</div>

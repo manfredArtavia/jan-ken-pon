@@ -41,7 +41,7 @@ players.route('/new')
 
 // clear the database
 players.route('/clear')
-  .get(PlayerCtrl.clearDB);
+  .delete(PlayerCtrl.clearDB);
 
 app.use('/api/championship', players);
 mongoose.connect('mongodb://localhost/players', function(err, res) {  

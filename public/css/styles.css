@@ -1,217 +1,278 @@
+
 /*
     for titles
-*/
-.title{
-	padding-top: 1%;
-	font-size: 20px;	
+    */
+    .title{
+       padding-top: 1%;
+       font-size: 22px;	    
+   }
+   .sub-title{
+    padding-top: 1%;
+    font-size: 18px;   
+    font-family: 'Fjalla One', sans-serif;
+}
+
+.sub-title2{
+    padding-top: 1%;
+    font-size: 15px;   
+    font-weight: 5px;
+    color: black;
+    font-family: 'Fjalla One', sans-serif;
+}
+
+.font-Fjalla{
+    font-family: 'Fjalla One', sans-serif;
 }
 
 /*
     for headers
-*/
-.head{
-	background-color: #65A2FF; 
+    */
+    .head{
+       background-color: #65A2FF;     
+   }
+
+   .head-title{
+    font-family: 'Bangers', cursive;
+    letter-spacing: 2px;    
 }
 
 /*
     about paragraphs
-*/
-.aboutText{
-    white-space: normal;
-    text-align: justify;
-    -moz-text-align-last: center; /* Firefox 12+ */
-    text-align-last: center;    
-}
+    */
+    .about-text{
+        white-space: normal;
+        text-align: justify;
+        -moz-text-align-last: center; /* Firefox 12+ */   
+        font-family: 'Raleway', sans-serif;  
+    }
+
+/*
+    definition paragraphs
+    */
+    .def-text{
+        white-space: normal;
+        
+        -moz-text-align-last: center; /* Firefox 12+ */
+        text-align-last: center;    
+        font-family: 'Raleway', sans-serif;  
+        text-align:left;
+    }
 
 /*
     main div which is the container of the rest of divs
-*/
-#main{
-	padding-top: 40px;
-}
+    */
+    #main{
+       padding-top: 40px;
+   }
 
 /*
     input type number
-*/
-.number{
-	width: 50px;
-}
+    */
+    .number{
+       width: 50px;
+   }
 
 /*
     change the default color of all navbars
-*/
-.header{
-	background-color: teal;
-	color: white;	
-    height: auto;
-    padding: 10px;
-}
+    */
+    .header{
+       background-color: teal;
+       color: white;	
+       height: auto;
+       padding: 10px;
+   }
 
 /*
     container of the taps
-*/
-#mainMenu li{
-	width: auto;
-}
+    */
+    #mainMenu li{
+       width: auto;
+   }
 
 /*
     Panel for show championship, about and examples
-*/
-#mainPanel{
-	height: auto;	
-}
+    */
+    #mainPanel{
+       height: auto;	
+   }
 
-#mainPanel .panel-heading{
-	background-color: teal ;    
-}
-#showResultBtn{
-    visibility: hidden;
-}
-/*
-    accordion panel heading
-*/
-#accordion .panel-heading{
-    background-color: LightGrey;     
-}
+   #mainPanel .panel-heading{
+       background-color: teal ;    
+   }
 
 /*
+    Hide modal sender buttons
+    */
+    #showResultBtn{
+        visibility: hidden;
+        width: 5px;
+        height: 5px;
+    }
+    #showErrBtn{
+        visibility: hidden;
+        width: 5px;
+        height: 5px;
+    }
+
+    .def-text{
+
+    }
+
+/*
+    open file button
+    */
+    #uploadSpan{
+        width: 100px;    
+    }
+
+/*
     accordion panel heading
-*/
-#championship .panel-heading{
-    background-color: LightGrey;     
-}
+    */
+    #accordion .panel-heading{
+        background-color: LightGrey;     
+    }
+
+/*
+    accordion panel heading
+    */
+    #championship .panel-heading{
+        background-color: LightGrey;     
+    }
 
 /*
     title of the file examples
-*/
-#accordion .example-title:hover {
-    cursor: pointer; 
-    cursor: hand;    
-}
+    */
+    #accordion .example-title, .example-title:hover {
+        cursor: pointer; 
+        cursor: hand;    
+        color: teal;
+    }
 
 
 /*
     main panel which contains the tabs
-*/
-#mainPanel .panel-body{    
-    height: auto;
-}
-
+    */
+    #mainPanel .panel-body{    
+        height: auto;
+    }
+    a:link {
+        text-decoration: none;
+    }
 /*
     body panels
-*/
-.panel-body {
-    height: auto;
-    border: 1px solid #ddd;
-    background: #f1f1f1;
-    overflow-y: scroll;
-}
+    */
+    .panel-body {
+        height: auto;
+        border: 1px solid #ddd;
+        background: #f1f1f1;
+        overflow-y: scroll;
+    }
 
 /*
     scroll disable
-*/
-.no-scroll{
-    overflow-y: hidden;
-}
+    */
+    .no-scroll{
+        overflow-y: hidden;
+    }
 
 /*
     change panel-body classes inside files
-*/
-#files .panel-body, .heading{
-     overflow: hidden;
-     overflow-x: auto;    
-     height: auto;     
-}
+    */
+    #files .panel-body, .heading{
+       overflow: hidden;
+       overflow-x: auto;    
+       height: auto;     
+   }
 /* 
     textarea no resizable
-*/
-textarea{
-    resize: none;
-}
+    */
+    textarea{
+        resize: none;
+    }
 
-.tab-content{
-     overflow-y: hidden;    
-}
+    .tab-content{
+       overflow-y: hidden;    
+   }
 /*
     list group for the top
-*/
-.list-group {
-    height: auto;
-}
+    */
+    .list-group {
+        height: auto;
+    }
 
 /*
     items in the list group for the top
-*/
-.list-group-item {
-    margin-top:auto;
-    margin-bottom: auto;
-    padding: 6px 6px;
-}
+    */
+    .list-group-item {
+        margin-top:auto;
+        margin-bottom: auto;
+        padding: 6px 6px;
+    }
 
 /*
     disable input file information
-*/
-.btn-file {
-    position: relative;
-    overflow: hidden;
-    height: 40px;    
-}
-.btn-file input[type=file] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    min-width: 100%;
-    min-height: 100%;
-    font-size: 100px;
-    text-align: right;
-    filter: alpha(opacity=0);
-    opacity: 0;
-    outline: none;
-    background: white;
-    cursor: inherit;
-    display: block;
-}
-.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
-     background-color: white; 
-    
-}
+    */
+    .btn-file {
+        position: relative;
+        overflow: hidden;
+    }
+    .btn-file input[type=file] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        font-size: 100px;
+        text-align: right;
+        filter: alpha(opacity=0);
+        opacity: 0;
+        outline: none;
+        background: white;
+        cursor: inherit;
+        display: block;
+    }
+
+    .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+       background-color: white; 
+       
+   }
 
 /*
     for social networks icons
-*/
-#socialicons {
-    text-align: center;
-}
-#socialicons .icon{
-    background: teal;
-    display: inline-block;
-    color: white;
-    font-size: 38px;
-    width: 40px;
-    height: 40px;
-    line-height: 34px;
-    text-align: center;
-    vertical-align: middle;
-    margin: 0 1px 8px;
-    -webkit-border-radius: 10px; 
-    -moz-border-radius: 10px; 
-    border-radius: 10px; 
-}
-#socialicons .icon:hover{
-    background: silver;
-}
+    */
+    #socialicons {
+        text-align: center;
+    }
+    #socialicons .icon{
+        background: teal;
+        display: inline-block;
+        color: white;
+        font-size: 38px;
+        width: 40px;
+        height: 40px;
+        line-height: 34px;
+        text-align: center;
+        vertical-align: middle;
+        margin: 0 1px 8px;
+        -webkit-border-radius: 10px; 
+        -moz-border-radius: 10px; 
+        border-radius: 10px; 
+    }
+    #socialicons .icon:hover{
+        background: silver;
+    }
 /*
     responsive for smaller device
-*/
-@media only screen and (min-width:320px) and (max-width: 480px)  {
-	h1{
-		font-size: 20px;
-	}
-}
+    */
+    @media only screen and (min-width:320px) and (max-width: 480px)  {
+       h1{
+          font-size: 20px;
+      }
+  }
 
 
-/* Portlet */
-.portlet {
+  /* Portlet */
+  .portlet {
     background: #fff;
     padding: 20px;
 }
@@ -268,7 +329,7 @@ textarea{
 .portlet-title > .nav-tabs > li.active:hover {
     border-bottom: 4px solid #f3565d;
     position: relative;
-  }
+}
 
 .portlet-title > .nav-tabs > li:hover {
     border-bottom: 4px solid #f29b9f;

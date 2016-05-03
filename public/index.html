@@ -6,9 +6,13 @@
 	<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/css/styles.css">
-	<!-- <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css"> -->
+	<link href='https://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Bangers' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Raleway:600italic' rel='stylesheet' type='text/css'>
+
 </head>
 <body>			
+	<!-- Scripts Imports -->
 	<script src="/node_modules/angular/angular.js"></script>
 	<script src="/node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -20,21 +24,23 @@
 	<script src="/controllers/championships.controller.js"></script>
 
 	<script src="/controllers/files.controller.js"></script>	
+	<!-- End of Scripts Imports -->
 
 	<div class="text-center header">
-		<h1>Jankenpón Championship</h1>			
+		<h1 class="head-title">Jankenpón Championship</h1>			
 	</div>
 
-
+	<!-- Main container -->
 	<div id="main" class="container-fluid ">
 		<div class="row">
+			<!-- Top view -->
 			<div class="container col-xs-12 col-sm-6 col-md-3" ng-controller="TopController">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<div class="input-group input-group-lg">
 							<span class="input-group-addon" id="sizing-addon1">Top</span>
 							<input type="number" class="form-control number text-center" placeholder="Number" aria-describedby="sizing-addon1" ng-model="maxTop">
-							<span class="btn btn-success input-group-addon " id="sizing-addon1" ng-click="getTop()">Go</span>						
+							<span class="btn btn-success input-group-addon" id="sizing-addon1" ng-click="getTop()">Go</span>						
 						</div>						
 					</div>
 					<div class="panel-body">
@@ -44,42 +50,48 @@
 						</ul>											    				
 					</div>
 					<center>
-					<div id="modal-clean-confirm" class="modal fade" role="dialog">
-						<div class="modal-dialog">						
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal">&times;</button>
-									<h4 class="modal-title">											        	
-										<i class="glyphicon glyphicon-warning-sign" aria-hidden="true"></i>
-										<p class="text-danger">Clean Database</p>
-									</h4>
-								</div>
-								<div class="modal-body">									
-									<p class="text-primary">Are you sure to clean the database?</p>
-								</div>
-								
-									<div class="modal-footer">
-										<button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="clearDB()">Confirm</button>
-										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<!-- Modal to confirm the Database clean -->
+						<div id="modal-clean-confirm" class="modal fade" role="dialog">
+							<div class="modal-dialog">						
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+										<h4 class="modal-title">											        	
+											<i class="glyphicon glyphicon-warning-sign" aria-hidden="true"></i>
+											<p class="text-danger">Clean Database</p>
+										</h4>
 									</div>
-								
+									<div class="modal-body">									
+										<p class="text-primary">Are you sure of delete all data?</p>
+									</div>
+									
+										<div class="modal-footer">
+											<button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="clearDB()">Confirm</button>
+											<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+										</div>
+									
+								</div>						
 							</div>						
-						</div>						
-					</div>
+						</div>
+						<div class="panel-footer">								
+							<button id="clearBtn"type="button" class="btn btn-danger btn-block"  data-toggle="modal" data-target="#modal-clean-confirm">Clear Database</button>				
+						</div>
+						<!-- end of Modal to confirm the Database clean -->
 					</center>
-					<div class="panel-footer">								
-						<button id="clearBtn"type="button" class="btn btn-danger btn-block"  data-toggle="modal" data-target="#modal-clean-confirm">Clear Database</button>				
-					</div>					
+									
 				</div>				
 			</div>
+			<!-- End of top view -->
 			<div class="container col-xs-12 col-sm-6 col-md-9">
+				<!-- Panel which contains the championship, Files examples and About me section -->
 				<div id="mainPanel" class="panel panel-default">
 					<div class="panel-heading"></div>
 					<div  class="panel-body">
 						<div class="portlet">
+							<!-- Porlet Header -->
 							<div class="portlet-title">
 								<div class="caption caption-red">
-									<i class="glyphicon glyphicon-certificate"></i>
+									<i class="fa fa-trophy"></i>
 								</div>
 								<ul id="mainMenu" class="nav nav-tabs text-center ">
 									<li class="active">
@@ -89,21 +101,29 @@
 										<a data-target="#files" data-toggle="tab">Files Examples</a>
 									</li>
 									<li>										
-										<a data-target="#about" data-toggle="tab">About me</a>
+										<a data-target="#api" data-toggle="tab">About API</a>
+									</li>									
+									<li>										
+										<a data-target="#solution" data-toggle="tab">About Solution</a>
 									</li>
+									<li>										
+										<a data-target="#aboutme" data-toggle="tab">About Me</a>
+									</li>
+																		
 								</ul>
 							</div>
+							 <!-- End of porlet Header -->
 							<div class="portlet-body">
 								<div class="tab-content">
+									<!-- Championship Section -->
 									<div class="tab-pane fade in active" id="championship" ng-controller="ChampionshipsController">					
-										<center>										
-											<p class="text-primary title" >Upload Championship</p>
+										<center>
+											<p class="text-primary title font-Fjalla" >Upload Championship</p>
 											<br>
-											<span class="btn btn-default btn-file btn-success glyphicon glyphicon-open text-center">
-												<label>Browse</label>
-												<input  title="Upload File" type="file" id="openFile">
-												<button id="showResultBtn" type="button" data-toggle="modal" data-target="#modal-result"></button>
-											</span>	
+											<span id="uploadSpan" class="btn btn-default btn-file">
+											    Browse <input title="Upload File" type="file" id="openFile">		
+										    </span>											
+										    <button id="showResultBtn" type="button" data-toggle="modal" data-target="#modal-result"></button>
 											<div id="modal-result" class="modal fade" role="dialog">
 											  <div class="modal-dialog">											    
 											    <div class="modal-content">
@@ -122,13 +142,38 @@
 											    </div>
 
 											  </div>
-											</div>															
+											</div>	
+											<br>
+											<button id="showErrBtn" type="button" data-toggle="modal" data-target="#modal-err"></button>												
+											<!-- Modal to show errors -->
+											<div id="modal-err" class="modal fade" role="dialog">
+											  <div class="modal-dialog">											    
+											    <div class="modal-content">
+											      <div class="modal-header">
+											        <button type="button" class="close" data-dismiss="modal">&times;</button>
+											        <h4 class="modal-title text-danger">									<i class="fa fa-frown-o" aria-hidden="true"></i>						<p class="text-danger title">Sorry</p>
+											        </h4>
+											      </div>
+											      <div class="modal-body">
+											        <p class="text-danger">Something was wrong</p>
+											        <p>{{reqError}}.</p>
+											      </div>
+											      <div class="modal-footer">
+											        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+											      </div>
+											    </div>
+											  </div>
+											</div>
+											<!-- End of Modal to show errors -->
 										</center>												
 									</div>
+									<!-- End of Champion section -->
+																
+									<!-- Files Examples sections -->
 									<div id="files" class="tab-pane fade" ng-controller="FilesController">
 										<center>		
 											<div>	
-												<p class="text-primary title" >Files Examples</p>
+												<p class="text-primary title font-Fjalla" >Files Examples</p>
 												<div class="panel-group" id="accordion">
 													<div class="panel panel-default" ng-repeat="file in files">
 														<div class="panel-heading">
@@ -140,7 +185,7 @@
 														<div id="{{file.id}}" class="panel-collapse collapse">
 															<div class="panel-body">
 																<textarea class="form-control" rows="{{file.height}}" readonly>{{file.championship}}</textarea>
-																<label>{{file.description}}</label>
+																<label class="aboutText">{{file.description}}</label>
 																<br>
 																<span  class="btn btn-success glyphicon glyphicon-download-alt
 																" ng-click="downloadTextAsFile(file.championship, file.title)"></span>
@@ -151,26 +196,19 @@
 											</div>
 										</center>
 									</div>
-									<div id="about" class="tab-pane fade">
-										<center>
-											<p class="text-primary title">About Me</p>
-											<p class="aboutText" disabled="true">
-												From La Virgen, Sarapiquí, Costa Rica, I have 21 years old and currently I'm studying computer engineering in the Instituto Tecnológico de Costa Rica, this is my 7th semester,  the next will be the professional practice.
-												I have experience working in a team and under pressure, willing to learn from others in profession and personally. I like to help others with everything that I can. I work with some basic web development technologies and currently I am learning about the Mean stack. I want to become in an excelent engineer and work on amazing projects.												
-											<p class="aboutText text-primary">"Choose a job you love, and you will never have to work a day in your life." Confucius</p>
-											<div id="socialicons">
-												<p class="title">Follow me at</p>
-												<a  class="icon fa fa-github-square" href="https://github.com/manfredArtavia" title="Follow with GitHub"  aria-hidden="true"></a>
-												<a  class="icon fa fa-linkedin-square" href="https://cr.linkedin.com/in/manfred-artavia-024ba2107" title="Follow with LinkedIn"  aria-hidden="true"></a>
-												<a  class="icon fa fa-facebook-square" href="https://www.facebook.com/manfred.artaviagomez" title="Follow with Facebook"  aria-hidden="true"></a>
-											</div>
-											<div id="socialicons">
-												<p class="title">Or contactme at</p>
-												<p class="fa fa-skype title"> manfred.artavia1</p>
-												<p class="fa fa-paper-plane title"> manartavia13@gmail.com</p>
-											</div>
-										</center>
+									<!-- End Files Examples sections -->
+
+									<!-- About API section -->
+									<div id="api" class="tab-pane fade text-left">
+										<div ng-include="'/views/aboutAPI.htm'"></div>
 									</div>
+									<!-- End About API section -->
+
+									<!-- About section -->
+									<div id="aboutme" class="tab-pane fade">
+										<div ng-include="'/views/aboutme.htm'"></div>
+									</div>
+									<!-- End of Files Examples section -->
 								</div>
 							</div>
 						</div>

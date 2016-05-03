@@ -15,21 +15,21 @@
         function readFile() {                       
             try {                
                 var fileReader = new FileReader();                
-                fileReader.onload = function () {                                        
+                fileReader.onload = function () {
                     ChampionshipsFactory.startChampionship(this.result)
                     .then(function (response) {                                         
-                    $scope.result = "The champion is "+response.winner[0]+",\n using "+response.winner[1].toUpperCase()+" strategy.";                    
-                    console.log($scope.result);
+                    $scope.result = "The champion is "+response.winner[0]+",\n using "+response.winner[1].toUpperCase()+" strategy.";                   
                     document.getElementById("showResultBtn").click();//show modal with the result                    
-                    document.getElementById("openFile").value = ""; //clear the inputFile
-                    $scope.champion = response;                                                                                   
-                 })            
-                }
-
+                    document.getElementById("openFile").value = ""; //clear the inputFile                    
+                    $scope.champion = response;                                                                                                       
+                 }).catch(function(error) {
+                    $scope.reqError = error;
+                    document.getElementById("showErrBtn").click();//show modal with the result                    
+                 });            
+                }                
                 fileReader.readAsText(this.files[0]);
-                fileReader.close();                                
             } catch(e) {                
-                return e;         
+                console.log( e);         
             }
         }
     }        
