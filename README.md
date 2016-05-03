@@ -1,9 +1,14 @@
 # jan-ken-pon-championship
-# A restful API to play the traditional game of rock-paper-scissors in single match or tournament.
-######Clone this project on your machine.
-#####Before anything you have to install mongoDB and nodeJS, available at:
-######https://nodejs.org/en/download/
-######https://www.mongodb.org/downloads
-######Then run MongoDB the terminal and create the database players.
-######Open another Terminal inside the project and run "npm install command" to install all dependencies of the application, after that run the command "npm start" for startup the application.
-######Finall you should able to see the aplication in"http://localhost:3000/"
+A restful API to play the traditional game of rock-paper-scissors in single match or tournament.
+#Installation
+**Before anything you have to install [mongoDB](https://www.mongodb.org/downloads) and [nodeJS](https://nodejs.org/en/download/)**
+1. Clone this repository
+..* "$ git clone https://github.com/manfredArtavia/jan-ken-pon.git"
+2. Run the mongod service with the terminal
+- Move to the bin folder inside the mongo installation folder "cd <Installation Path>/mongo/bin"
+- Run the command "mongod"
+3. Move to the project path with the terminal
+- "$ cd <ProjectPath>"
+- "$ npm install" (for install all project dependencies)
+- "$ npm start"  (startup the application)
+4. You shoul able to see the application running at http://localhost:3000/
