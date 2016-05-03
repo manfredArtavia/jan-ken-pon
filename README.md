@@ -1,5 +1,5 @@
 # jan-ken-pon-championship
-# A restful API to play the traditional game of rock-paper-scissors in single match or tournament made on main stack technologies
+# A restful API to play the traditional game of rock-paper-scissors in single match or tournament.
 ######Clone this project on your machine.
 #####Before anything you have to install mongoDB and nodeJS, available at:
 ######https://nodejs.org/en/download/
