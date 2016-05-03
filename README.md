@@ -11,6 +11,6 @@ A restful API to play the traditional game of rock-paper-scissors in single matc
   * Run the command "mongod"
 3.  **Move to the project path with the terminal:**
   * "$ cd <ProjectPath>"
-  * "$ npm install" (for install all project dependencies)
-  * "$ npm start"  (startup the application)
+  * "$ npm install" (for install all project dependencies)"
+  * "$ npm start"  (startup the application)"
 4. **You shoul able to see the application running at http://localhost:3000/**
